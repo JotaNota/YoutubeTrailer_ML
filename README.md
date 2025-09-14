@@ -19,10 +19,10 @@ The workflow includes:
     - movies_youtube_sentiments_clean.csv  
 
 - **notebooks/**
-  - AnalysisYoutubeTrailer_I.ipynb              📒 Initial EDA  
-  - AnalysisYoutubeTrailer_II.ipynb             📒 Consolidated EDA and documentation  
-  - AnalysisYoutubeTrailer_III.ipynb            📒 ML model feature selection + training  
-  - AnalysisYoutubeTrailer_Final.ipynb          📒 Unified notebook (I + II + III)  
+  - AnalysisYoutubeTrailer_I.ipynb              → Initial EDA  
+  - AnalysisYoutubeTrailer_II.ipynb             → Consolidated EDA and documentation  
+  - AnalysisYoutubeTrailer_III.ipynb            → ML model feature selection + training  
+  - AnalysisYoutubeTrailer_Final.ipynb          → Unified notebook (I + II + III)  
 
 - **docs/**
   - Readme_I.md  
