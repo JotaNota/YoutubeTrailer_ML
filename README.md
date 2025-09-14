@@ -200,9 +200,9 @@ This is framed as a **supervised learning problem**, where the goal is to predic
 
 
 ###  Target Definition:`favorability_ratio` & `favorability_level_3`
-- Created a `favorability_ratio` combining positive, neutral, and negative comments.  
-- Neutral comments were weighted at **0.25** to avoid them dominating the metric and to give more influence to positive/negative reactions.  
-- The continuous metric was transformed into a balanced categorical target,`low`, `medium`, `high`, using **qcut**, ensuring similar group sizes.  
+- A `favorability_ratio` was created combining positive, neutral, and negative comments.  
+- Neutral comments were weighted at **0.25** to prevent them from dominating the metric and to give more influence to positive/negative reactions.  
+- The continuous metric was transformed into a balanced categorical target (`low`, `medium`, `high`) using **qcut**, ensuring similar group sizes.  
 <img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/d6e8f68e-c1dd-4a1f-a492-516783cbc26c" />
 
 ---
@@ -217,7 +217,7 @@ This is framed as a **supervised learning problem**, where the goal is to predic
 ---
 
 ###  Model Training
-I used three supervised classification algorithms with `favorability_level_3` as target:  
+Three supervised classification algorithms were trained with `favorability_level_3` as target:  
 
 1. **Decision Tree**  
    - Accuracy ≈ 0.70  
@@ -227,28 +227,23 @@ I used three supervised classification algorithms with `favorability_level_3` as
 
 2. **Logistic Regression**  
    - Accuracy improved from 0.73 → 0.84 with more iterations (`max_iter=5000`).  
-   - Excellent recall for `low` and `medium`, but still weaker on `high` (~65%).  
+   - Excellent recall for `low` and `medium`, but still weaker on `high` (~65%).
+     <img width="528" height="394" alt="image" src="https://github.com/user-attachments/assets/3069f2cc-1f61-4c41-8316-23537ab277eb" />
+
 
 3. **Random Forest**  
    - Accuracy ≈ 0.80  
    - More **balanced performance** across classes.  
-   - Recall for `high` = 0.72, better than Decision Tree and Logistic Regression.  
+   - Recall for `high` = 0.72, better than Decision Tree and Logistic Regression.
+   <img width="528" height="393" alt="image" src="https://github.com/user-attachments/assets/5dbb1cfb-02bc-42d4-9913-1f519ae0f861" />
+
 
 ---
-
-### Results
-- **Logistic Regression (5000 iter)**: highest global accuracy (0.84), but unbalanced across classes.  
-- **Random Forest**: slightly lower accuracy (0.80) but more consistent across all classes.  
-- **Decision Tree**: simpler but less effective.  
-
----
-
-### 📌 Conclusions
-- **EDA (Part II)** provided context on variables like genre and budget, but feature selection revealed that **sentiment metrics and engagement variables** are stronger predictors.  
-- **Random Forest** was the most balanced model, offering good precision and recall across all target classes, even if Logistic Regression achieved a slightly higher accuracy.  
-- The project highlights that **audience sentiment variables** are crucial to predicting favorability, while genre and budget alone are not strong predictors.  
-
-► This makes Random Forest a good candidate for practical applications, while Logistic Regression could be useful as a lightweight baseline.  
+### 📊 Metrics & Model Comparison
+- **Decision Tree**: lowest accuracy 0.70, struggles with the *High* class. simpler but less effective. 
+- **Logistic Regression**: best accuracy  0.84 with more iterations (5000 iter), but unbalanced across classes. Strong in *Low/Medium*, weaker in *High*.  
+- **Random Forest**: slightly lower accuracy ~0.80 but more consistent across classes, with better F1 for *High*.
+<img width="691" height="471" alt="image" src="https://github.com/user-attachments/assets/88bdbc1c-43d8-4ab4-9611-796fafc7e05d" />
 
 ---
 
@@ -257,7 +252,7 @@ I used three supervised classification algorithms with `favorability_level_3` as
 - In the initial EDA, variables such as **genre** and **budget** were explored to build context and hypotheses.  
 - After applying **dimensionality reduction**, other dataset features proved to be more relevant predictors.  
 - Three classifiers were trained: **Decision Tree, Logistic Regression, and Random Forest**.  
-- The classification model achieved **~70–75% accuracy** in predicting trailer favorability.  
+- The classification model achieved **70–75% accuracy** in predicting trailer favorability.  
 - Feature selection improved interpretability by highlighting the **10 most predictive variables**.  
 - **Random Forest** achieved the best performance, with a balanced trade-off between precision and recall, and an **accuracy close to 80%**.  
 - The project served as a **practical exercise** in feature selection, model training, and evaluation, with results intended for academic purposes only.  
